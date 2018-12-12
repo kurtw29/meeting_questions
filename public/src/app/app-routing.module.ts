@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'browse', component: QuestionsComponent},
   { path: 'add', component: AddComponent},
   { path: 'edit/:id', component: EditComponent},
-  { path: "", pathMatch: "full", redirectTo: "/browse"}
+  { path: "", pathMatch: "full", redirectTo: "/login"}
 ];
 
 @NgModule({
