@@ -1,40 +1,46 @@
 <div class="row">
-  <form class="container col s6">
+  <form class="container col s6" (submit)="regProc()">
     <h2>Registration</h2>
     <div class="input-field">
-      <label for="firstName">First Name: </label>
-      <input type="text" name="firstName" id="firstName"/>
+      <label for="firstName">First Name:</label>
+      <input type="text" name="firstName" id="firstName" required minlength="2" maxlength="24" pattern="[a-zA-Z]+-?[a-zA-Z]+" [(ngModel)]="firstName" #validFirst="ngModel"/>
+      <p class='error' *ngIf="validFirst.invalid && (validFirst.dirty || validFirst.touched || submit.touched)">First name must be between 2-24 characters</p>
     </div>
     <div class="input-field">
       <label for="lastName">Last Name: </label>
-      <input type="text" name="lastName" id="lastName"/>
+      <input type="text" name='lastname' id="lastName" required minlength="2" maxlength="24" pattern="[a-zA-Z]+-?[a-zA-Z]+" [(ngModel)]="lastName" #validLast="ngModel"/>
+      <p class='error' *ngIf="validLast.invalid && (validLast.dirty || validLast.touched || submit.touched)">Last name must be between 2-24 characters</p>
     </div>
     <div class="input-field">
       <label for="email">Email:</label>
-      <input type="email" name="email" id="email"/>
+      <input type="email" name="email" id="email" required pattern="[a-zA-Z\d.+_-]+@[a-zA-Z\d._-]+\.[a-zA-Z]+" [(ngModel)]="email" #validEmail="ngModel"/>
+      <p class="error" *ngIf="validEmail.invalid && (validEmail.dirty || validEmail.touched || submit.touched)">Invalid Email</p>
     </div>
     <div class="input-field">
       <label for="password">Password:</label>
-      <input type="password" name="password" id="password"/> 
+      <input type="password" name="password" id="password" required minlength="4" maxlength="64" pattern="[a-zA-Z\d.+_-]+" [(ngModel)]="password" #validPassword="ngModel"/>
+      <p class="error" *ngIf="validPassword.invalid && (validPassword.dirty || validPassword.touched || submit.touched)">Invalid Password</p>
     </div>
     <div class="input-field">
         <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" name="confirmPassword" id="confirmPassword"/> 
+        <input type="password" name="confirmPassword" id="confirmPassword" required pattern="[a-zA-Z\d.+_-]+" [(ngModel)]="confirmPassword" #validConfirmPassword="ngModel"/>
+        <p class="error" *ngIf="validConfirmPassword.invalid && (validConfirmPassword.dirty || validConfirmPassword.touched)">Must confirm password</p>
+        <p class="error" *ngIf="validPassword != validConfirmPassword  && (validConfirmPassword.dirty || validConfirmPassword.touched || submit.touched)" >Passowrd & Confirm Password must match</p> 
       </div>
-    <button class="btn" type="submit">Register</button>
+    <button class="btn" type="submit" #submit>Register</button>
 
     
     
   </form>
-  <form class="container col s6">
+  <form class="container col s6" (submit)="loginProc()">
     <h2>Login</h2>
     <div class="input-field">
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email"/>
+      <label for="emailLogin">Email:</label>
+      <input type="email" name="email" id="emailLogin"/>
     </div>
     <div class="input-field">
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password"/> 
+      <label for="passwordLogin">Password:</label>
+      <input type="password" name="password" id="passwordLogin"/> 
     </div>
     <button class="btn" type="submit">Login</button>
   </form>
