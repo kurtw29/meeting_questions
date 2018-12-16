@@ -27,7 +27,8 @@
         <p class="error" *ngIf="validConfirmPassword.invalid && (validConfirmPassword.dirty || validConfirmPassword.touched)">Must confirm password</p>
         <p class="error" *ngIf="validPassword != validConfirmPassword  && (validConfirmPassword.dirty || validConfirmPassword.touched || submit.touched)" >Passowrd & Confirm Password must match</p> 
       </div>
-    <button class="btn" type="submit" #submit>Register</button>
+    <!-- <button class="btn" type="submit" #submit>Register</button> -->
+    <a class="btn" href="/browse">Register</a>
 
     
     
@@ -42,6 +43,7 @@
       <label for="passwordLogin">Password:</label>
       <input type="password" name="password" id="passwordLogin"/> 
     </div>
-    <button class="btn" type="submit">Login</button>
+    <!-- <button class="btn" type="submit">Login</button> -->
+    <a class="btn" href="/browse">Login</a>
   </form>
 </div>
