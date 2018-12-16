@@ -1,6 +1,14 @@
 <!-- User to refine search & shorten table of questions -->
 <form class="container selection row" (submit)="onSelected()">
   <div class="col s12">
+      <label>Libraries</label>
+      <select class="custom-select custom-select-lg mb-3">
+        <option>Meeting</option>  
+        <option>Social</option>
+        <option>Dating</option>
+      </select>
+  </div>
+  <div class="col s12">
     <label>Question Qualities</label>
     <select name='quality' required [(ngModel)]="selected['quality']" class="custom-select custom-select-lg mb-3">
       <!-- <option value="" disabled selected>Choose your Quality</option> -->
@@ -31,6 +39,7 @@
 <table class='highlight responsive-table container'>
     <thead>
       <tr>
+          <th>Library</th>
           <th>Decision Quality</th>
           <th>Question Type</th>
           <th>Question</th>
@@ -40,6 +49,7 @@
     <tbody>
       <tr *ngFor="let q of questions">
       <!-- <tr *ngFor="let q of questions | filterBy: filter"> -->
+        <td>Meeting</td>
         <td>{{ q.quality }}</td>
         <td>{{ q.type }}</td>
         <td>{{ q.question }}</td>
